@@ -1,0 +1,18 @@
+.container{
+  text-align: center;
+  color: white;
+}
+
+.jumbotron{
+  text-align: center;
+}
+
+body{
+  background-image: url(http://img27.laughinggif.com/pic/HTTPS93d3cucGl4ZWxzdGFsay5uZXQvd3AtY29udGVudC91cGxvYWRzLzIwMTYvMDYvRnJlZS1IRC1HaWYtV2FsbHBhcGVycy5naWYlog.gif);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.img{
+  text-align: center;
+}

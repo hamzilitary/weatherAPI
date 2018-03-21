@@ -9,6 +9,7 @@
       "jquery": true,
       "node": true,
       "jasmine": true
+      # "es5": true
     },
     "rules": {
       "semi": 1,

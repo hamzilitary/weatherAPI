@@ -1,11 +1,17 @@
-
-var getDino = $.get(`http://dinoipsum.herokuapp.com/api/?format=html`),
-  fillContainer = function(html) {
-    $('.showDino').html(html);
-    console.log("html: "+ html);
-  },
-  error = function() {
-      console.log('No dinosaurs');
-    };
-
-getDinos.then(fillContainer, error);
+export class dinoApi(){
+  getNames(){
+    return new Promise(function(resolve, reject) {
+      let request = new XMLHttpRequest();
+      let url = `http://dinoipsum.herokuapp.com/api/?format=html&paragraphs=1&words=1`;
+      request.onload = function() {
+        if (this.status === 200) {
+          resolve(request.response);
+        } else {
+          reject(Error(request.statusText));
+        }
+      }
+      request.open("GET", url, true);
+      request.send();
+    });
+  }
+}
