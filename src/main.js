@@ -16,10 +16,23 @@ $(document).ready(function() {
 
     promise.then(function(response) {
       let body = JSON.parse(response);
-      $('.showTemp').text(`The temperature in Kelvins is ${body.main.temp}.`);
-        $('.showHumidity').text(`The humidity in ${city} is ${body.main.humidity}%`);
+      let weatherArray = [];
+    //   for(i=0; i<=weatherArray.length; i++)
+    //   {if(body.main=(i);
+    // });
+    //   return weatherArray.push(i);
+    //   $(".showTemp").append(weatherArray);
+      body.weather.forEach(function(element) {
+        weatherArray.push(weather.description + " " + element.humidity);
+        console.log(element);
+        });
+        weatherArray.forEach(function(element) {
+          $(".showTemp").append("<p>" + element + "</p>");
+        });
+      // $('.showTemp').text(`The temperature in Kelvins is ${body.main.temp}.`);
+      //   $('.showHumidity').text(`The humidity in ${city} is ${body.main.humidity}%`);
       }, function(error) {
         $('.errors').text(`There was an error processing your request: ${error.message}`);
       });
+    });
   });
-});
