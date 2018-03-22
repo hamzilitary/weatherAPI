@@ -1,36 +1,25 @@
 import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './styles.css'
+import './styles.css';
+import { WeatherApi } from './weather-backEnd.js';
 
 $(document).ready(function() {
-  $('#dinoRandom').click(function() {
+  $('#weatherLocation').click(function() {
     event.preventDefault();
-    let promise = dinoApi.getNames();
+    let city = $('#location').val();
+    console.log(city);
+    $('#location').val("");
+    let weather = new WeatherApi();
+    let promise = weather.getWeather(city);
+    console.log(weather);
 
     promise.then(function(response) {
       let body = JSON.parse(response);
-        $('.showDino').text(`The humidity in ${city} is ${body.main.humidity}%`);
+      $('.showTemp').text(`The temperature in Kelvins is ${body.main.temp}.`);
+        $('.showHumidity').text(`The humidity in ${city} is ${body.main.humidity}%`);
       }, function(error) {
-        $('.showErrors').text(`There was an error processing your request: ${error.message}`);
+        $('.errors').text(`There was an error processing your request: ${error.message}`);
       });
   });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// let getDino = $.get('http://dinoipsum.herokuapp.com/api/?format=html&paragraphs=1&words=1').then(function(response){
-//   $('.showDino').html(response);
-//   getDino.then(response);
-// });
